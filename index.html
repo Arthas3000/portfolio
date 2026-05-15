@@ -51,6 +51,11 @@
         </video>
     </div>
 
+    <!-- Decorative large-scale elements (low opacity, partially offscreen) -->
+    <div class="decor decor-dot decor-top-left motion-smooth" aria-hidden="true"></div>
+    <div class="decor wireframe-polygon decor-bottom-right motion-smooth" aria-hidden="true"></div>
+    <div class="decor outline-giant decor-center motion-smooth" aria-hidden="true"></div>
+
     <!-- Navegação Responsiva -->
     <header class="fixed w-full top-0 z-50 transition-all duration-500 glass-panel" id="navbar">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -81,30 +86,46 @@
 
     <main class="relative z-10">
         
-        <!-- Hero Section -->
-        <section class="h-screen flex flex-col justify-center items-center text-center px-6" id="inicio">
-            <div class="max-w-4xl mx-auto reveal active">
-                <h1 class="text-5xl md:text-7xl font-display font-light text-white mb-6 leading-tight">
-                    Design que transcende <br class="hidden md:block">
-                    <span class="italic text-white/70">a funcionalidade.</span>
-                </h1>
-                <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto font-light">
-                    Soluções digitais premium para marcas que buscam excelência, performance e uma estética inesquecível.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                    <a href="#projetos" class="px-8 py-4 bg-white text-black font-medium text-sm tracking-wide hover:bg-gray-200 transition-colors duration-300 flex items-center gap-2 rounded-sm">
-                        Explorar Portfólio
-                    </a>
-                    <a href="#contato" class="px-8 py-4 bg-transparent text-white font-medium text-sm tracking-wide border border-white/20 hover:bg-white/5 transition-colors duration-300 rounded-sm">
-                        Iniciar Projeto
-                    </a>
+        <!-- Hero Section (Left: copy / Right: cinematic video + 3D visual) -->
+        <section class="min-h-screen py-20 px-6" id="inicio">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Left column: Title, text and CTAs -->
+                <div class="lg:col-span-6 reveal active">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-display font-light text-white mb-6 leading-tight text-left">
+                        Design que transcende
+                        <br class="hidden md:inline">
+                        <span class="italic text-white/70">a funcionalidade.</span>
+                    </h1>
+                    <p class="text-base md:text-lg text-gray-400 mb-8 max-w-xl font-light text-left">
+                        Soluções digitais premium para marcas que buscam excelência, performance e uma estética inesquecível.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-start items-start">
+                        <a href="#projetos" class="px-8 py-4 bg-white text-black font-medium text-sm tracking-wide hover:bg-gray-200 transition-colors duration-300 flex items-center gap-2 rounded-sm">
+                            Explorar Portfólio
+                        </a>
+                        <a href="#contato" class="px-8 py-4 bg-transparent text-white font-medium text-sm tracking-wide border border-white/20 hover:bg-white/5 transition-colors duration-300 rounded-sm">
+                            Iniciar Projeto
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right column: Cinematic video + hero visual (3D canvas) -->
+                <div class="lg:col-span-6 relative flex justify-center lg:justify-end items-center">
+                    <div class="w-full max-w-[780px] h-[520px] rounded-lg overflow-visible relative hero-visual-frame">
+                        <!-- Canvas para Three.js será injetado em #hero-visual -->
+                        <div id="hero-visual" class="absolute inset-0 pointer-events-none"></div>
+
+                        <!-- Framing element to keep video readable but unobtrusive -->
+                        <div class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+                            <div class="w-[86%] h-[86%] border border-white/6 rounded-lg backdrop-blur-[4px]"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <!-- Scroll Indicator -->
-            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-pulse">
-                <span class="text-xs uppercase tracking-widest text-white/50">Scroll</span>
-                <div class="w-[1px] h-12 bg-gradient-to-b from-white/50 to-transparent"></div>
+            <!-- Subtle scroll indicator (left aligned for visual balance) -->
+            <div class="absolute bottom-10 left-8 flex flex-col items-start gap-2 opacity-40 hidden md:flex">
+                <span class="text-xs uppercase tracking-widest text-white/40">Scroll</span>
+                <div class="w-[1px] h-12 bg-gradient-to-b from-white/30 to-transparent"></div>
             </div>
         </section>
 
